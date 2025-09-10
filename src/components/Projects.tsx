@@ -112,7 +112,7 @@ function FullScreenProject({ project }: { project: any }) {
         viewport={{ once: true, margin: "-100px" }}
         className="w-full md:w-1/3 z-20 space-y-4 md:space-y-6 mb-6 md:mb-0"
       >
-        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-black to-gray-400 bg-clip-text text-transparent drop-shadow-lg">
+        <h2 className="md:py-2 text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-black to-gray-400 bg-clip-text text-transparent drop-shadow-lg">
           {project.title}
         </h2>
         <div className="max-h-48 md:max-h-none overflow-y-auto md:overflow-visible">
