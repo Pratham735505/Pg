@@ -10,7 +10,7 @@ const projects = [
     title: "Devbot",
     description:
       `DevBot is a student-focused coding web app where the journey into programming begins with ease, support, and modern tools. Designed specifically for beginners, our MERN stack platform combines simplicity and functionality to help students take their first steps into the coding world with confidence.
-Our mission at DevBot is to offer a space where new coders can access curated resources like tutorials, example code with voice explanations, and interactive quizzes. With dedicated bots — Help Bot for NPGC college-related info and Dev Bot for beginner-friendly code responses — the platform is tailored to meet students’ needs both academically and technically.`,
+Our mission at DevBot is to offer a space where new coders can access curated resources like tutorials, example code with voice explanations, and interactive quizzes. With dedicated bots — Help Bot for NPGC college-related info and Dev Bot for beginner-friendly code responses — the platform is tailored to meet students' needs both academically and technically.`,
     screenshots: ["/images/dev1.png", "/images/devbot1.png","/images/devbot2.png"],
     tech: ["Mern", "Tailwind CSS", "Framer Motion", "AI","Gemini","Web Scraping"],
     github: "https://github.com/pratham735505/Devbot",
@@ -99,31 +99,38 @@ function FullScreenProject({ project }: { project: any }) {
     );
 
   return (
-    <section className="h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 relative overflow-hidden">
+    <section className="min-h-screen flex flex-col md:flex-row items-center justify-between px-4 md:px-20 py-8 md:py-0 relative overflow-hidden">
       {/* Left side - Info */}
       <motion.div
-        initial={{ x: -80, opacity: 0 }}
+        initial={{ x: -50, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="md:w-1/3 z-20 space-y-6"
+        transition={{ 
+          duration: 0.6, 
+          ease: "easeOut",
+          type: "tween"
+        }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="w-full md:w-1/3 z-20 space-y-4 md:space-y-6 mb-6 md:mb-0"
       >
-        <h2 className="text-5xl font-extrabold tracking-tight bg-gradient-to-r from-black to-gray-400 bg-clip-text text-transparent drop-shadow-lg">
+        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-black to-gray-400 bg-clip-text text-transparent drop-shadow-lg">
           {project.title}
         </h2>
-        <p className="text-lg text-gray-500 leading-relaxed">
-          {project.description}
-        </p>
+        <div className="max-h-48 md:max-h-none overflow-y-auto md:overflow-visible">
+          <p className="text-sm md:text-lg text-gray-500 leading-relaxed">
+            {project.description}
+          </p>
+        </div>
 
         {/* Links */}
-        <div className="flex gap-4 mt-6">
+        <div className="flex gap-4 pt-2">
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition transform hover:scale-110"
+              className="p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-200 transform hover:scale-110"
             >
-              <FaGithub size={22} />
+              <FaGithub size={18} className="md:w-[22px] md:h-[22px]" />
             </a>
           )}
           {project.website && (
@@ -131,9 +138,9 @@ function FullScreenProject({ project }: { project: any }) {
               href={project.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition transform hover:scale-110"
+              className="p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-200 transform hover:scale-110"
             >
-              <FaExternalLinkAlt size={20} />
+              <FaExternalLinkAlt size={16} className="md:w-[20px] md:h-[20px]" />
             </a>
           )}
         </div>
@@ -141,26 +148,33 @@ function FullScreenProject({ project }: { project: any }) {
 
       {/* Right side - Screenshots */}
       <motion.div
-        initial={{ x: 80, opacity: 0 }}
+        initial={{ x: 50, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="mt-[-4rem] md:mt-0  md:w-2/3 relative flex items-center justify-center z-10"
+        transition={{ 
+          duration: 0.6, 
+          ease: "easeOut",
+          type: "tween"
+        }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="w-full md:w-2/3 relative flex items-center justify-center z-10 mb-6 md:mb-0"
       >
-        <div className="relative md:w-full w-[48vh] h-[27vh] md:h-[500px] overflow-hidden rounded-xl shadow-2xl group">
+        <div className="relative w-full max-w-sm md:max-w-none md:w-full h-64 md:h-[500px] overflow-hidden rounded-xl shadow-2xl group">
           <AnimatePresence mode="wait">
             <motion.div
               key={project.screenshots[current]}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, type: "tween" }}
               className="absolute inset-0"
             >
               <Image
                 src={project.screenshots[current]}
                 alt={project.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 66vw"
+                priority
               />
               {/* Overlay gradient for cinematic look */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
@@ -168,32 +182,41 @@ function FullScreenProject({ project }: { project: any }) {
           </AnimatePresence>
         </div>
 
-        {/* Navigation arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 bg-white/10 hover:bg-white/30 backdrop-blur-md text-white p-3 rounded-full transition transform hover:scale-110"
-        >
-          ◀
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 bg-white/10 hover:bg-white/30 backdrop-blur-md text-white p-3 rounded-full transition transform hover:scale-110"
-        >
-          ▶
-        </button>
+        {/* Navigation arrows - only show if more than one screenshot */}
+        {project.screenshots.length > 1 && (
+          <>
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 md:left-4 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white p-2 md:p-3 rounded-full transition-all duration-200 transform hover:scale-110 touch-manipulation"
+            >
+              <span className="text-sm md:text-base">◀</span>
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 md:right-4 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white p-2 md:p-3 rounded-full transition-all duration-200 transform hover:scale-110 touch-manipulation"
+            >
+              <span className="text-sm md:text-base">▶</span>
+            </button>
+          </>
+        )}
       </motion.div>
 
       {/* Tech stack */}
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
+        initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-         className="mt-[-4rem] md:mt-0 md:absolute md:bottom-10 left-0 md:left-1/2 md:-translate-x-1/2 flex flex-wrap gap-3 justify-center z-30"
+        transition={{ 
+          duration: 0.6, 
+          delay: 0.2,
+          type: "tween"
+        }}
+        viewport={{ once: true, margin: "-50px" }}
+        className="w-full md:absolute md:bottom-10 md:left-1/2 md:-translate-x-1/2 flex flex-wrap gap-2 md:gap-3 justify-center z-30"
       >
         {project.tech.map((t: string, i: number) => (
           <span
             key={i}
-            className="px-4 py-2 bg-white/10 backdrop-blur-lg border border-black/20 rounded-lg text-sm text-black shadow-md hover:bg-white/20 transition cursor-pointer hover:scale-110"
+            className="px-3 py-1.5 md:px-4 md:py-2 bg-white/10 backdrop-blur-lg border border-black/20 rounded-lg text-xs md:text-sm text-black shadow-md hover:bg-white/20 transition-all duration-200 cursor-pointer hover:scale-105"
           >
             {t}
           </span>
