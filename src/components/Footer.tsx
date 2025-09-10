@@ -2,13 +2,15 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail ,Library} from "lucide-react";
+
 
 const socials = [
   { href: "https://github.com/pratham735505", icon: Github, label: "GitHub" },
   { href: "https://www.linkedin.com/in/pratham-gupta-73a380255/", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://twitter.com/pratham735505", icon: Twitter, label: "Twitter" },
+  { href: "https://x.com/pratham735505", icon: Twitter, label: "Twitter" },
   { href: "mailto:prathamgupta735505@gmail.com", icon: Mail, label: "Email" },
+  {href:"https://medium.com/pratham735505/", icon:Library, label:"Medium"}
 ];
 
 const Footer = () => (
