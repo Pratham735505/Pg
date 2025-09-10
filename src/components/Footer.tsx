@@ -10,7 +10,7 @@ const socials = [
   { href: "https://www.linkedin.com/in/pratham-gupta-73a380255/", icon: Linkedin, label: "LinkedIn" },
   { href: "https://x.com/pratham735505", icon: Twitter, label: "Twitter" },
   { href: "mailto:prathamgupta735505@gmail.com", icon: Mail, label: "Email" },
-  {href:"https://medium.com/pratham735505/", icon:Library, label:"Medium"}
+  {href:"https://medium.com/@pratham735505/", icon:Library, label:"Medium"}
 ];
 
 const Footer = () => (
