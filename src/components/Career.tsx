@@ -90,7 +90,7 @@ export default function Career() {
                 {/* Dot & Year on line */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
                   <div className="w-6 h-6 bg-white rounded-full border-4 border-neutral-700 shadow-lg" />
-                  <span className="text-white text-sm font-semibold mt-2">
+                  <span className="text-white text-sm font-semibold md:mt-2 mt-0">
                     {item.year}
                   </span>
                 </div>
